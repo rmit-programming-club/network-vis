@@ -4,6 +4,8 @@ branch-defaults:
   master:
     environment: network-vis
     group_suffix: null
+  setup-d3:
+    environment: network-vis
 global:
   application_name: network-vis
   branch: null
