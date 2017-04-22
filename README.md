@@ -1,4 +1,4 @@
-# Network Vis [![Build Status](https://travis-ci.org/rmit-programming-club/network-vis.svg?branch=master)](https://travis-ci.org/rmit-programming-club/network-vis)
+# Network Vis [![Build Status](https://travis-ci.org/rmit-programming-club/network-vis.svg?branch=master)](https://travis-ci.org/rmit-programming-club/network-vis) [![Code Climate](https://codeclimate.com/github/rmit-programming-club/network-vis/badges/gpa.svg)](https://codeclimate.com/github/rmit-programming-club/network-vis) [![Test Coverage](https://codeclimate.com/github/rmit-programming-club/network-vis/badges/coverage.svg)](https://codeclimate.com/github/rmit-programming-club/network-vis/coverage) [![Issue Count](https://codeclimate.com/github/rmit-programming-club/network-vis/badges/issue_count.svg)](https://codeclimate.com/github/rmit-programming-club/network-vis)
 
 -----
 
