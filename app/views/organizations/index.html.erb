@@ -3,43 +3,40 @@
 
 <h1><%= @orgName %></h1>
 <br \>
-<%= @test %>
-
 <table>
       <thead><b>Members</b></thead>
-      <% @members.each do |member| %>
+      <%# @members.each do |member| %>
       <tr>
-          <td><%= member[:login] %></td>
+          <td><%#= member[:login] %></td>
       </tr>
-      <% end %>
+      <%# end %>
 </table>
 <br \>
 <table>
   <thead><b>Repos</b></thead>
-      <% @repos.each do |repo| %>
+      <%# @repos.each do |repo| %>
       <tr>
-        <td><%= repo[:name] %></td>
+        <td><%#= repo[:name] %></td>
       </tr>
-      <% end %>
+      <%# end %>
 </table>
 <br \>
 <table>
   <thead><b>A members repos</b></thead>
-  <% @memberRepos.each do |repo| %>
+  <%# @memberRepos.each do |repo| %>
       <tr>
-        <td><%= repo[:name] %></td>
+        <td><%#= repo[:name] %></td>
       </tr>
-  <% end %>
+  <%# end %>
 </table>
 <table />
 <br \>
 <table>
   <thead><b>A members repo commits </b></thead>
-  <% @memberRepoCommits.each do |commit| %>
+  <%# @memberRepoCommits.each do |commit| %>
       <tr>
-        <td><%= commit[:url] %></td>
+        <td><%#= commit[:url] %></td>
       </tr>
-  <% end %>
+  <%# end %>
 </table>
 <table />
-
