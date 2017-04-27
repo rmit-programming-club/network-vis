@@ -22,3 +22,4 @@ namespace :rubocop do
       sh "#{rubocop_cmd} #{files.join(" ")}"
     end
   end
+end

@@ -34,9 +34,6 @@ Style/SpecialGlobalVars:
 Style/WordArray:
   Enabled: false
 
-Lint/EndAlignment:
-  AlignWith: variable
-
 Style/StringLiteralsInInterpolation:
   Enabled: false
 
