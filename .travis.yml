@@ -1,4 +1,6 @@
 language: ruby
 
+script:
+  - bundle exec rake rubocop:changed
 notifications:
     slack: rmit-programming-club:4oYYWHQc3D8klHMUIw3ShFS9
