@@ -19,10 +19,10 @@ adhering to software development best practices like Code Review, Continuous Int
 </p>
 
 <h3>Contributing Students<h3>
-
+  
 <% data.each do |contributor| %>
 <p>
-  Name: <em><%= contributor[:login] %><br></em>
+  Name: <em><%= link_to "#{contributor[:login]}", contributor[:url] %><br></em>
   Picture: <%= image_tag(contributor[:avatar_url], :alt => "avatar picture", :class => "avatar_image") %>
 </p>
 <% end %>
