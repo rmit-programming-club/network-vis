@@ -20,4 +20,16 @@ adhering to software development best practices like Code Review, Continuous Int
 
 <h3>Contributing Students<h3>
 
-<%= data %>
+<% data.each do |contributor| %>
+<p>
+  Name: <em><%= contributor[:login] %><br></em>
+  Picture: <%= image_tag(contributor[:avatar_url], :alt => "avatar picture", :class => "avatar_image") %>
+</p>
+<% end %>
+
+<style>
+
+.avatar_image {
+  max-height: 150px;
+  max-width:  150px;
+}
