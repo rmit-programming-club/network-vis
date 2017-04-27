@@ -26,10 +26,10 @@ class OrganizationsController < ApplicationController
     @members = client.organization_members(org)
 
     aMember = @members[0]
-    # Gets the first members first repo
+    # Gets the first members
     @memberRepos = client.repos(aMember[:login])
-    aRepo = @memberRepos[0][:full_name]
-    @memberRepoCommits = client.list_commits(aRepo)
+    repo = @memberRepos[0][:full_name]
+    @memberRepoCommits = client.list_commits(repo)
 
 
 
