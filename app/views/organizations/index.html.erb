@@ -1,0 +1,42 @@
+<h1>Organization#show</h1>
+<p>Find me in app/views/organization/show.html.erb</p>
+
+<h1><%= @orgName %></h1>
+<br \>
+<table>
+      <thead><b>Members</b></thead>
+      <%# @members.each do |member| %>
+      <tr>
+          <td><%#= member[:login] %></td>
+      </tr>
+      <%# end %>
+</table>
+<br \>
+<table>
+  <thead><b>Repos</b></thead>
+      <%# @repos.each do |repo| %>
+      <tr>
+        <td><%#= repo[:name] %></td>
+      </tr>
+      <%# end %>
+</table>
+<br \>
+<table>
+  <thead><b>A members repos</b></thead>
+  <%# @memberRepos.each do |repo| %>
+      <tr>
+        <td><%#= repo[:name] %></td>
+      </tr>
+  <%# end %>
+</table>
+<table />
+<br \>
+<table>
+  <thead><b>A members repo commits </b></thead>
+  <%# @memberRepoCommits.each do |commit| %>
+      <tr>
+        <td><%#= commit[:url] %></td>
+      </tr>
+  <%# end %>
+</table>
+<table />
