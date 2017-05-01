@@ -2,6 +2,8 @@ language: ruby
 rvm:
   - 2.3.3
 
+script:
+  - bundle exec rake rubocop:changed
 notifications:
     slack: rmit-programming-club:4oYYWHQc3D8klHMUIw3ShFS9
 

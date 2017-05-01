@@ -1,0 +1,132 @@
+LineLength:
+  Enabled: false
+
+ClassLength:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/CommentIndentation:
+  Enabled: false
+
+HashSyntax:
+   EnforcedStyle: ruby19
+
+Style/SignalException:
+  Enabled: false
+
+Style/SpaceInsideHashLiteralBraces:
+  Enabled: false
+
+Lint/AmbiguousOperator:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Style/SpecialGlobalVars:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false
+
+Style/StringLiteralsInInterpolation:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/FirstParameterIndentation:
+  Enabled: false
+
+Style/IndentHash:
+  Enabled: false
+
+Style/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Style/AlignHash:
+  Enabled: false
+
+Style/MultilineOperationIndentation:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Max: 6
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Style/DotPosition:
+  EnforcedStyle: trailing
+
+Style/PerlBackrefs:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+# for simple cases more readable
+Style/GuardClause:
+  Enabled: false
+
+# sometimes the most readable way of doing things
+Style/ClassVars:
+  Enabled: false
+
+# for single `/` more readable
+Style/RegexpLiteral:
+  Enabled: false
+
+Lint/AssignmentInCondition:
+  Enabled: false
+
+Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+# looks correct / intuitive
+Lint/ParenthesesAsGroupedExpression:
+  Enabled: false
+
+Style/RescueModifier:
+  Enabled: false
+
+# we use it a few times in tests and nobody does random nested method definitions
+Lint/NestedMethodDefinition:
+  Enabled: false
+
+Style/FormatString:
+  Enabled: false
+
+Metrics/BlockNesting:
+  Enabled: false
+
+Style/IndentationWidth:
+  Width: 2
+
+Lint/NonLocalExitFromIterator:
+  Enabled: false
+
+
+AllCops:
+  TargetRubyVersion: 2.4
+  Include:
+    - 'Rakefile'
+  Exclude:
+    - 'spec/support/*' # test config
