@@ -1,6 +1,8 @@
 class GraphController < ApplicationController
   def index; end
 
+  def network; end
+
   def data
     respond_to do |format|
       format.json do
