@@ -1,0 +1,40 @@
+{
+  "nodes": [
+    {"id": "thundergolfer", "group": 1},
+    {"id": "oldboismokey", "group": 1},
+    {"id": "pancrisp", "group": 1},
+    {"id": "raddus", "group": 1},
+    {"id": "someothermember", "group": 1},
+    {"id": "patrickmfsd", "group": 1},
+    {"id": "alexrobinson", "group": 1},
+    {"id": "fanuch", "group": 1},
+    {"id": "Domnomnomifcation", "group": 1},
+    {"id": "jacshad", "group": 1},
+    {"id": "kylie_jenner", "group": 2},
+    {"id": "mr_magoo", "group": 2},
+    {"id": "barackobama", "group": 2},
+    {"id": "sergie_brin", "group": 2},
+    {"id": "zuckerberg", "group": 2},
+    {"id": "rmit-programming-club", "group": 3}
+  ],
+  "links": [
+    {"source": "thundergolfer", "target": "oldboismokey", "value": 3},
+    {"source": "thundergolfer", "target": "pancrisp", "value": 2},
+    {"source": "oldboismokey", "target": "fanuch", "value": 3},
+    {"source": "alexrobinson", "target": "jacshad", "value": 1},
+    {"source": "mr_magoo", "target": "thundergolfer", "value": 1},
+    {"source": "sergie_brin", "target": "barackobama", "value": 2},
+    {"source": "mr_magoo", "target": "zuckerberg", "value": 1},
+    {"source": "rmit-programming-club", "target": "zuckerberg", "value": 8},
+    {"source": "someothermember", "target": "zuckerberg", "value": 10},
+    {"source": "someothermember", "target": "rmit-programming-club", "value": 6},
+    {"source": "raddus", "target": "zuckerberg", "value": 1},
+    {"source": "alexrobinson", "target": "zuckerberg", "value": 1},
+    {"source": "sergie_brin", "target": "zuckerberg", "value": 1},
+    {"source": "pancrisp", "target": "zuckerberg", "value": 1},
+    {"source": "thundergolfer", "target": "zuckerberg", "value": 2},
+    {"source": "kylie_jenner", "target": "zuckerberg", "value": 1},
+    {"source": "thundergolfer", "target": "barackobama", "value": 1},
+    {"source": "thundergolfer", "target": "someothermember", "value": 3}
+  ]
+}
