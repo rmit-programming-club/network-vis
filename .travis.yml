@@ -1,17 +1,16 @@
 language: ruby
 rvm:
-  - 2.3.3
-
+- 2.3.3
 script:
-  - bundle exec rake rubocop:changed
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
 notifications:
-    slack: rmit-programming-club:4oYYWHQc3D8klHMUIw3ShFS9
-
+  slack: rmit-programming-club:4oYYWHQc3D8klHMUIw3ShFS9
 env:
+  matrix:
   - DB=postgresql
-script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
+  - secure: K9lp2gn0h7noLSGL9eGTnm77xI8m0f77D7Cd7Ktg0YFQmuSg4SHEbpHwDiwxmpHfNBmP5OLWiW7d5vNofqkpVh9YPo9c1b7mDWKu5Ch2nbgWO13HASq/dUepEbEFsT+FaeOOlNgcfHyP+01n8HjVjVZrIFD1b1o25nfJpwFEEfufBlmdDoPxFtXLQynCobiTy4TEjatOinamZQi7soRh0rVgEpsg2Ll3rZ11uOxVpj+m1O5B6k+aVQ0Pqq3DGTZpDKCdKKPkQBN9SzmWAmL3JqdXoDN0ZR7FIf0Ku4OjZqtI520S8bA8Ptdb9YNW80GFfEtlnUpObFXWMFk8F9Z24jgJFV0fZ+VOBvJjAB12ehQ84ad4+sJWUE+ncjahrplbpaKVZx5QNQpgAHqGKpefbUCGmf2XqpHOZ33nZIHi0kYY7v7HDc5JLg83CJVX0wsSOb385rWMsd8d7U6SZWI3OsmbSYvVL097L7keTcrpPb1ut2u+FqDlzod0V06pNKhKCFsYK3i8jKPjTlNHSSz2EphSTKZAW1IgJxWfJaKZ5X/hkY17Q6ouB/LA6Ebiz7Mmio/0Nr0feTbn4j8O8tgBxqOs2xWn/yBjEXBZROwLPnqjx9AfREdXwe8BnaxAXCv7B2EQtYp+LEL060MXfnTn0oU6KfKBf/kcbZUzuDesBwU=
+  - secure: V5vnOH99pzjIpr4Zh0gIwyWoI5ucEcUaiBP5CCYx4w4Sdy47zxhGCx8cwzRTH1MNlRNUQm9nM3z+YjGsX8jbj6T0jAhix7aSLgW4z3rEgoGGSmB9HRnORMHXpmEHfHTyJHnmLl1+LIIJT5IX/qO2omFdHUnrFnUfUjJwG26L0CqnZPjbbPHgEDgWWu9N5DqaZe9+voUSq72bKPdSTubKyz6JkY4kZ+nBeuUw/ycAwTWpKUnyVNBErXl4uBrtFx/bEf3l0zTxCLqSs75zHnBjVDDePrC0uYG9QuWfqqoQUWqNyS1OKpw5EjF9E09iZjjx6GhEP3t4vOhG/K6BXjUtAS/WmMBZ9JmhXPUoQ4sW2aURNbCZfPCpNJd8sLef7ahNrYVUUiQUVnnYdd+ceHpCqd1Cv3Xf+PRibvHaIEQNV/FLZqY+aXmGvTDHSEHwPSxvhI+1cX2fPrZsfpb5jReOXIjzOyQp1EQF87+uz1zU7K/thnKRz0jtKnA+yOnxH79hrJ+3NAKbfuDxnYOK02Oc1qA2pePqpthggKpuSYS+1lcrf4c0WfwVn0u2YApwkAcJi1+exLx3cuj0ELCHtyjdSRHWRSDUZcNy5qOCKttLT8Yom7Rp9EI0vIU5vlG8ucWFr01WQVegrn98P+r8cAMlPmKssFleak3O7kUwypWT7Ig=
 before_script:
-  - psql -c 'create database my_app_test' -U postgres
-bundler_args: --binstubs=./bundler_stubs
+- psql -c 'create database my_app_test' -U postgres
+bundler_args: "--binstubs=./bundler_stubs"
