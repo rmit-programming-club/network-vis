@@ -1,35 +1,34 @@
 <h1>About This Project</h1>
 
-<h3>What</h3>
+<h2>What</h2>
 <p>
 This web app aims to effectively and beautifully communicate the amount of activity and collaboration within a Github Organisation.
-
-Its main feature is a network graph showing members of the organisation and their interactions with each other.<br>
-It can quickly show how active and vibrant a developer community is, which is the use-case it was created for.<br>
+Its main feature is a network graph showing members of the organisation and their interactions with each other.
+It can quickly show how active and vibrant a developer community is, which is the use-case it was created for.
 </p>
 
-<h3>Why</h3>
+<h2>Why</h2>
 
 <p>
-This project was incepted and built by Royal Melbourne of University (RMIT) students in RMIT's Programming Club.<br>
+This project was incepted and built by RMIT University students in The Programming Club.
 It can be used by the club and by faculty to measure student engagement and collaboration, a key goal of the club.
-
 As well as being a useful tool, it also served as the first time students in the club got together to develop in a team,
-adhering to software development best practices like Code Review, Continuous Integration, and Test Driven Development.
+adhering to software development best practices like code reviews, continuous integration, and test driven development.
 </p>
 
-<h3>Contributing Students<h3>
-  
-<% data.each do |contributor| %>
-<p>
-  Name: <em><%= link_to "#{contributor[:login]}", contributor[:url] %><br></em>
-  Picture: <%= image_tag(contributor[:avatar_url], :alt => "avatar picture", :class => "avatar_image") %>
-</p>
-<% end %>
+<h2>Contributing Students</h2>
+    <div class="contributor-container">
 
-<style>
+        <% data.each do |contributor| %>
+        <div class="contributor">
+            <div class="contributor-image">
+                <%= link_to image_tag(contributor[:avatar_url], class: 'avatar_image', alt: 'avatar picture'), contributor[:html_url], target: '_blank' %>
+            </div>
+            <div class="contributor-info">
+                <%= link_to "#{contributor[:login]}", contributor[:html_url], :class => "contributor-info", target: '_blank'%>
+            </div>
+        </div>
+        <% end %>
 
-.avatar_image {
-  max-height: 150px;
-  max-width:  150px;
-}
+    <div>
+</div>
