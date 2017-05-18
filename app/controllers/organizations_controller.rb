@@ -18,15 +18,16 @@ class OrganizationsController < ApplicationController
 
     client = Octokit::Client.new
 
-    # Commented out for now, the build to not fail needs to have my
-    # password hardcoded in and don't want to push that to the public repo
-=begin
+    # Using enviroment variables for authentication
+    # Use commands to set username and password
+    #   export GITHUB_USERNAME="my_username"
+    #   export GITHUB_PASSWORD="my_password"
+
     # Provide authentication credentials
     client.configure do |c|
-      c.login = 'USERNAME'
-      # c.password = 'PASSWORD'
+      c.login = Rails.application.secrets.github_username
+      c.password = Rails.application.secrets.github_password
     end
-
 
     # Fetch the current user and their organizations
     user = client.user
@@ -43,7 +44,6 @@ class OrganizationsController < ApplicationController
     @memberRepos = client.repos(aMember[:login])
     repo = @memberRepos[0][:full_name]
     @memberRepoCommits = client.list_commits(repo)
-*/
-=end
+
   end
 end

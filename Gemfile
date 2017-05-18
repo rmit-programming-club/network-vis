@@ -9,10 +9,17 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0'
-# Use Bootstrap for CSS
-gem 'bootstrap-sass', '~> 3.2.0'
+# Use Bootstrap in CSS
+gem 'bootstrap', '~> 4.0.0.alpha6'
 # Use Autoprefixer that adds vendor prefixes when compiling CSS
 gem 'autoprefixer-rails'
+# Use Font-Awesome stylesheets for Rails asset pipelines
+gem "font-awesome-rails"
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -37,7 +44,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# User Octokit to interact with the Github API
+# Use Octokit to interact with the Github API
 gem 'octokit', '~> 4.0'
 
 # Use Capistrano for deployment
