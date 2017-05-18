@@ -1,0 +1,57 @@
+html {
+    font-family: 'Merriweather', serif;
+    font-size: 16px;
+    line-height: 1.25;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    max-width: 768px;
+    margin: 32px auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 24px 0 8px 0;
+    font-family: 'Lato', sans-serif;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 1.25px;
+}
+
+p {
+    margin: 0;
+    line-height: 1.75;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.contributor-container {
+    display: flex;
+    max-width: 768px;
+    justify-content: center;
+}
+
+.contributor {
+    justify-content: center;
+    align-items: center;
+}
+
+.contributor a {
+    margin: 8px 40px;
+    border-radius: 50%;
+}
+
+.contributor .contributor-info {
+    margin: 0;
+    border-radius: 0;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    text-decoration: none;
+}
+
+.avatar_image {
+    margin: 16px 0 8px 0;
+    max-height: 120px;
+    border-radius: 50%;
+}
