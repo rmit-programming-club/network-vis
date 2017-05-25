@@ -6,12 +6,15 @@
 
 -----
 
+## Testing
+
+We are using `rspec-rails` for testing our web app. Run `bundle exec rspec` to run all the tests. (Note: you will have to have already run `bundle install` to install the testing Gem).
 
 
+## Code review check List
 
-# Code review check List
 
-## General
+### General
 
 Does the code work?
 Does it perform its intended function, the logic is correct etc. Is all the code easily understood?
@@ -23,14 +26,14 @@ Is there any commented out code?
 Do loops have a set length and correct termination conditions?
 Can any logging or debugging code be removed?
 
-## Security
+### Security
 
 Are all data inputs checked (for the correct type, length, format, and range) and encoded?
 Where third-party utilities are used, are returning errors being caught?
 Are output values checked and encoded?
 Are invalid parameter values handled?
 
-## Documentation
+### Documentation
 
 Do comments exist and describe the intent of the code?
 Are all functions commented?
@@ -42,5 +45,5 @@ Is there any incomplete code? If so, should it be removed or flagged with a suit
 ## Testing
 
 Is the code testable? i.e. don’t add too many or hide dependencies, unable to initialize objects, test frameworks can use methods etc.
-Do tests exist and are they comprehensive? 
+Do tests exist and are they comprehensive?
 Do unit tests actually test that the code is performing the intended functionality? Are arrays checked for ‘out-of-bound’ errors?
