@@ -4,6 +4,8 @@ rvm:
 script:
 - RAILS_ENV=test bundle exec rake db:migrate --trace
 - bundle exec rake db:test:prepare
+- bundle exec rspec
+
 notifications:
   slack: rmit-programming-club:4oYYWHQc3D8klHMUIw3ShFS9
 env:
