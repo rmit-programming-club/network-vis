@@ -12,7 +12,14 @@
 
 ## Running the App
 
-Run `bundle exec rails server` or just `rails server`
+#### Authorizing with Github Client 
+
+In order to use Github's API in this project you need to provide your Github authentication details. You do this by setting two environment variables: `GITHUB_USERNAME` and `GITHUB_PASSWORD`. *If you use 2-Factor Authentication* you will need to use a Github Access Token instead of your password. Otherwise, it's just your password.
+
+#### Starting the Local Server
+
+Run `GITHUB_USERNAME=<USERNAME> GITHUB_PASSWORD=<PASSWORD OR ACCESS_TOKEN> bundle exec rails server` to get authentication working. If you don't want to have to keep supplying these details save them to a `.bash_profile` file or something.
+
 
 ## Testing
 
