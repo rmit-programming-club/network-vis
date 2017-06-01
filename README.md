@@ -6,6 +6,14 @@
 
 -----
 
+## Installing 
+
+`git clone` the repo and then do `bundle install`. Post any issues you have in Slack or on the Facebook group.
+
+## Running the App
+
+Run `bundle exec rails server` or just `rails server`
+
 ## Testing
 
 We are using `rspec-rails` for testing our web app. Run `bundle exec rspec` to run all the tests. (Note: you will have to have already run `bundle install` to install the testing Gem).
