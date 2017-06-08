@@ -11,7 +11,7 @@ $( document ).ready(function() {
       .force("charge", d3.forceManyBody())                            // also kind wrecks the network
       .force("center", d3.forceCenter(width / 2, height / 2));
 
-  var demo_file = "../organisation_connections.json";
+  var demo_file = "../organization_connections.json";
   var other_file = "../miserables.json";
 
   var DATA_PATH = "/organizations/network";
