@@ -1,3 +1,5 @@
+require 'json'
+
 class OrganizationsController < ApplicationController
 
   #for windows devs
@@ -45,5 +47,11 @@ class OrganizationsController < ApplicationController
     repo = @memberRepos[0][:full_name]
     @memberRepoCommits = client.list_commits(repo)
 
+  end
+
+  def network
+    stub = File.read(Rails.root.join('public/organisation_connections.json'))
+    data = JSON.parse(stub)
+    render :json => data
   end
 end
