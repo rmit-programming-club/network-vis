@@ -11,11 +11,13 @@ $( document ).ready(function() {
       .force("charge", d3.forceManyBody())                            // also kind wrecks the network
       .force("center", d3.forceCenter(width / 2, height / 2));
 
-  var demo_file = "../organisation_connections.json";
+  var demo_file = "../organization_connections.json";
   var other_file = "../miserables.json";
+
+  var DATA_PATH = "/organizations/network";
   // because we use this on <root>/graph we need to go one directory up
   // to find the /public JSON file at <root>.
-  d3.json(demo_file, function(error, graph) {
+  d3.json(DATA_PATH, function(error, graph) {
     if (error) throw error;
 
     var link = svg.append("g")
