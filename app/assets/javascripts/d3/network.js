@@ -19,7 +19,6 @@ $( document ).ready(function() {
   d3.json(endpoint, function(error, graph) {
     if (error) throw error;
 
-    console.log("dasdasd")
     var link = svg.append("g")
         .attr("class", "links")
       .selectAll("line")
