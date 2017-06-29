@@ -37,11 +37,13 @@ class OrganizationsController < ApplicationController
     # value of 0, this is similar to python's default_dict
     @occurrences = Hash.new
     @occurrences.default_proc = proc { |hash, key| hash[key] = 0}
+    @contributors = Set.new
     
     # Search each repo in the organisation
     @repos.each { |repo|
       # For each set of contributors in the repo
       client.contributors(repo[:full_name]).map{ |contributor|
+        @contributors << contributor[:login]
         # Get all possible pairs of contributors
         contributor[:login]}.combination(2) {
           |c1, c2|
@@ -53,6 +55,8 @@ class OrganizationsController < ApplicationController
           @occurrences[link] += 1
         }
     }
+    
+    @nodes = @contributors.map{ |contributor| {:id => contributor, :group => (rand(2) + 1)} }
     
     # Reformat @occurences for consumption by d3
     @links = @occurrences.map { |occurrence, value|
@@ -82,7 +86,7 @@ class OrganizationsController < ApplicationController
     # @memberRepos = client.repos(aMember[:login])
     # repo = @memberRepos[0][:full_name]
     # @memberRepoCommits = client.list_commits(repo)
-    render :json => @links
+    render :json => {:nodes => @nodes, :links => @links}
 
   end
 end
