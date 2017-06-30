@@ -13,9 +13,10 @@ $( document ).ready(function() {
 
   var demo_file = "../organisation_connections.json";
   var other_file = "../miserables.json";
+  var endpoint = "../organizations/index"
   // because we use this on <root>/graph we need to go one directory up
   // to find the /public JSON file at <root>.
-  d3.json(demo_file, function(error, graph) {
+  d3.json(endpoint, function(error, graph) {
     if (error) throw error;
 
     var link = svg.append("g")

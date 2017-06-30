@@ -8,12 +8,6 @@ class OrganizationsController < ApplicationController
   # OAuth token and authentication with Organisation rather than a user.
   # with the org
 
-  @orgName
-  @members
-  @repos
-  @memberRepos
-  @memberRepoCommits
-
   def index
 
     client = Octokit::Client.new
@@ -32,18 +26,67 @@ class OrganizationsController < ApplicationController
     # Fetch the current user and their organizations
     user = client.user
     organizations = client.organizations(user)
+    
 
     # TODO add check for a specific org, currently just gets first
     org = organizations[0][:login]
     @orgName = org
     @repos = client.repos(org)
-    @members = client.organization_members(org)
 
-    aMember = @members[0]
-    # Gets the first members
-    @memberRepos = client.repos(aMember[:login])
-    repo = @memberRepos[0][:full_name]
-    @memberRepoCommits = client.list_commits(repo)
+    # Create a new hash and set default_proc so new entries are given a default
+    # value of 0, this is similar to python's default_dict
+    @occurrences = Hash.new
+    @occurrences.default_proc = proc { |hash, key| hash[key] = 0}
+    @contributors = Set.new
+    
+    # Search each repo in the organisation
+    @repos.each { |repo|
+      # For each set of contributors in the repo
+      client.contributors(repo[:full_name]).map{ |contributor|
+        @contributors << contributor[:login]
+        # Get all possible pairs of contributors
+        contributor[:login]}.combination(2) {
+          |c1, c2|
+          # As a set, so they don't double up, avoids (jeff, dave) and
+          # (dave, jeff) being different entries
+          link = Set.new [c1, c2]
+          # Increment the amount of times that pair have appeared in a repo
+          # together
+          @occurrences[link] += 1
+        }
+    }
+    
+    @nodes = @contributors.map{ |contributor| {:id => contributor, :group => (rand(2) + 1)} }
+    
+    # Reformat @occurences for consumption by d3
+    @links = @occurrences.map { |occurrence, value|
+      # Current hacky solution for dealing with sets, I can't just do set[0] as
+      # they are unordered, if you have a more elegant solution, please change
+      o_array = occurrence.to_a
+      {:source => o_array[0], :target => o_array[1], :value => value}
+    }
+    
+    
+    # @members = client.organization_members(org)
+    # @member_names = @members.map{|member| member[:login]}
+    # @links = Array.new
+    # @member_names.combination(2){
+    #   |m1, m2|
+    #   @links << {:source => m1, :target => m2, :value => 0}
+    # }
+    
+    # @members.each { |member|
+    #   repos = client.repos(member[:login])
+    # }
+    
+    # #client.contributors(repo[:full_name])
+
+    # aMember = @members[0]
+    # # Gets the first members
+    # @memberRepos = client.repos(aMember[:login])
+    # repo = @memberRepos[0][:full_name]
+    # @memberRepoCommits = client.list_commits(repo)
+    render :json => {:nodes => @nodes, :links => @links}
 
   end
 end
