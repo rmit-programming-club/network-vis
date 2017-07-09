@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$(document).on('turbolinks:load', function() {
   console.log("hello from network.js");
   var svg = d3.select("svg"),
       width = +svg.attr("width"),
