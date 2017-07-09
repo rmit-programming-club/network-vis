@@ -92,7 +92,11 @@ class OrganizationsController < ApplicationController
   private
   
     def set_org
-      @org = params[:name]
+      if !params[:name].blank?
+        @org = params[:name]
+      else
+        @org = "rmit-programming-club"
+      end
     end
   
     def org_params
