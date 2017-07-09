@@ -3,6 +3,7 @@ $( document ).ready(function() {
   var svg = d3.select("svg"),
       width = +svg.attr("width"),
       height = +svg.attr("height");
+      radius = 5;
 
   var color = d3.scaleOrdinal(d3.schemeCategory20);
 
@@ -31,7 +32,7 @@ $( document ).ready(function() {
       .selectAll("circle")
       .data(graph.nodes)
       .enter().append("circle")
-        .attr("r", 5)
+        .attr("r", radius)
         .attr("fill", function(d) { return color(d.group); })
         .call(d3.drag()
             .on("start", dragstarted)
@@ -56,8 +57,10 @@ $( document ).ready(function() {
           .attr("y2", function(d) { return d.target.y; });
 
       node
-          .attr("cx", function(d) { return d.x; })
-          .attr("cy", function(d) { return d.y; });
+          // .attr("cx", function(d) { return d.x; })
+          // .attr("cy", function(d) { return d.y; });
+          .attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
+          .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
     }
   });
 
