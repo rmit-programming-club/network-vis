@@ -1,4 +1,6 @@
-$( document ).ready(function() {
+function drawGraph(name) {
+  // Remove any existing graph
+  d3.selectAll("svg > *").remove();
   console.log("hello from network.js");
   var svg = d3.select("svg"),
       width = +svg.attr("width"),
@@ -13,7 +15,7 @@ $( document ).ready(function() {
 
   var demo_file = "../organisation_connections.json";
   var other_file = "../miserables.json";
-  var endpoint = "../organizations/index"
+  var endpoint = "../organizations/index?name="+name
   // because we use this on <root>/graph we need to go one directory up
   // to find the /public JSON file at <root>.
   d3.json(endpoint, function(error, graph) {
@@ -77,4 +79,4 @@ $( document ).ready(function() {
     d.fx = null;
     d.fy = null;
   }
-});
+}
