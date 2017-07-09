@@ -1,5 +1,8 @@
-$( document ).ready(function() {
-  console.log("hello from network.js");
+function drawGraph() {
+  var name = $('#name')[0].value
+  // Remove any existing graph
+  console.log("drawGraph Called");
+  d3.selectAll("svg > *").remove();
   var svg = d3.select("svg"),
       width = +svg.attr("width"),
       height = +svg.attr("height");
@@ -13,7 +16,7 @@ $( document ).ready(function() {
 
   var demo_file = "../organisation_connections.json";
   var other_file = "../miserables.json";
-  var endpoint = "../organizations/index"
+  var endpoint = "../organizations/index?name="+name
   // because we use this on <root>/graph we need to go one directory up
   // to find the /public JSON file at <root>.
   d3.json(endpoint, function(error, graph) {
@@ -77,4 +80,9 @@ $( document ).ready(function() {
     d.fx = null;
     d.fy = null;
   }
+}
+
+// Add listener to button
+$(document).on('turbolinks:load', function() {
+  $('#submit-name').click(drawGraph)
 });
