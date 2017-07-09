@@ -1,7 +1,8 @@
-function drawGraph(name) {
+function drawGraph() {
+  var name = $('#name')[0].value
   // Remove any existing graph
+  console.log("drawGraph Called");
   d3.selectAll("svg > *").remove();
-  console.log("hello from network.js");
   var svg = d3.select("svg"),
       width = +svg.attr("width"),
       height = +svg.attr("height");
@@ -80,3 +81,8 @@ function drawGraph(name) {
     d.fy = null;
   }
 }
+
+// Add listener to button
+$(document).on('turbolinks:load', function() {
+  $('#submit-name').click(drawGraph)
+});
