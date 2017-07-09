@@ -29,9 +29,8 @@ class OrganizationsController < ApplicationController
     
 
     # TODO add check for a specific org, currently just gets first
-    org = organizations[0][:login]
-    @orgName = org
-    @repos = client.repos(org)
+    set_org
+    @repos = client.repos(@org)
 
     # Create a new hash and set default_proc so new entries are given a default
     # value of 0, this is similar to python's default_dict
@@ -89,4 +88,15 @@ class OrganizationsController < ApplicationController
     render :json => {:nodes => @nodes, :links => @links}
 
   end
+  
+  private
+  
+    def set_org
+      @org = params[:name]
+    end
+  
+    def org_params
+      params.require(:org).permit(:name)
+    end
+  
 end
