@@ -6,6 +6,14 @@
 
 -----
 
+## Features Under Development 
+
+* Visualise connectivity between organisation members based on coding activity. Emphasise most active members [under dev]
+* Visualise overall organisation activity by activity it the organisation's repositories [under dev]
+* Visualise overall organisation activity by aggregating the organisation's member's activity
+* Visualise a member's immediate network (who they code with), who much they're coding, and what they code
+* Visualise who's following who within the network
+
 ## Installing 
 
 `git clone` the repo and then do `bundle install`. Post any issues you have in Slack or on the Facebook group.
