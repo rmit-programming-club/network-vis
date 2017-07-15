@@ -1,4 +1,13 @@
 class ProfilesController < ApplicationController
+  COLLAB_TYPES = [
+    'CommitCommentEvent', 'ForkEvent', 'IssueCommentEvent',
+    'IssuesEvent', 'PullRequestEvent', 'PullRequestReviewEvent',
+    'PullRequestReviewCommentEvent', 'PushEvent'
+  ]
+
+  CONTRIBUTION_TYPES = [
+    'PushEvent', 'PullRequestEvent', 'IssuesEvent'
+  ]
 
   def organisation
     render json: {"you entered in": params.fetch('organisation_name')}
@@ -7,14 +16,49 @@ class ProfilesController < ApplicationController
   def person
     org_name = params.fetch('organisation_name')
     person = params.fetch('person_username')
-    if organisation_members(org_name).any? {|h| h[:login] == person}
-      render json: {"you entered in": person, "who is in": org_name}
+
+    organisation = Organization.where(name: org_name).first_or_create do |org|
+      organisation_members(org_name).each do |member|
+        org.users.build username: member[:login]
+      end
+    end
+
+    if organisation.members.where(username: person).any?
+      render json: {"you entered in": person,
+                    "who is in": org_name}
     else
-      render json: {"you entered in": person, "who is missing from": org_name}
+      render json: {"you entered in": person,
+                    "who is missing from": org_name}
     end
   end
 
   private
+
+  # This can take AGEESSSS to finish
+  def connected_members(user_events)
+    connected = {}
+    members = organisation_members(params.fetch('organisation_name'))
+    repos = Set.new
+    # build list of repos and their contributors
+    user_events.each do |event|
+      next unless COLLAB_TYPES.include? event[:type]
+      repos << event[:repo][:name]
+    end
+
+    repos.each do |r|
+      next if r == "Zendesk"
+      gh_client.contributors(r).each do |contributor|
+        next unless members.include(contributor[:login])
+        if connected.key? contributor[:login]
+          connected[contributor[:login]] += 1
+        else
+          connected[contributor[:login]] = 1
+        end
+      end
+    end
+
+    connected
+  end
 
   def gh_client
     @client ||= begin
@@ -29,6 +73,7 @@ class ProfilesController < ApplicationController
       client.configure do |c|
         c.login = Rails.application.secrets.github_username
         c.password = Rails.application.secrets.github_password
+        c.auto_paginate = true
       end
 
       client
@@ -37,6 +82,10 @@ class ProfilesController < ApplicationController
 
   def user
     gh_client.user
+  end
+
+  def user_events
+    @user_events ||= gh_client.user_events(person)
   end
 
   def organisation_members(org_name)
