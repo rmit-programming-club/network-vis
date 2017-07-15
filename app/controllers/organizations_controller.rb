@@ -26,7 +26,7 @@ class OrganizationsController < ApplicationController
     # Fetch the current user and their organizations
     user = client.user
     organizations = client.organizations(user)
-    
+
 
     # TODO add check for a specific org, currently just gets first
     set_org
@@ -37,7 +37,7 @@ class OrganizationsController < ApplicationController
     @occurrences = Hash.new
     @occurrences.default_proc = proc { |hash, key| hash[key] = 0}
     @contributors = Set.new
-    
+
     # Search each repo in the organisation
     @repos.each { |repo|
       # For each set of contributors in the repo
@@ -54,9 +54,9 @@ class OrganizationsController < ApplicationController
           @occurrences[link] += 1
         }
     }
-    
+
     @nodes = @contributors.map{ |contributor| {:id => contributor, :group => (rand(2) + 1)} }
-    
+
     # Reformat @occurences for consumption by d3
     @links = @occurrences.map { |occurrence, value|
       # Current hacky solution for dealing with sets, I can't just do set[0] as
@@ -64,8 +64,8 @@ class OrganizationsController < ApplicationController
       o_array = occurrence.to_a
       {:source => o_array[0], :target => o_array[1], :value => value}
     }
-    
-    
+
+
     # @members = client.organization_members(org)
     # @member_names = @members.map{|member| member[:login]}
     # @links = Array.new
@@ -73,11 +73,11 @@ class OrganizationsController < ApplicationController
     #   |m1, m2|
     #   @links << {:source => m1, :target => m2, :value => 0}
     # }
-    
+
     # @members.each { |member|
     #   repos = client.repos(member[:login])
     # }
-    
+
     # #client.contributors(repo[:full_name])
 
     # aMember = @members[0]
@@ -88,9 +88,9 @@ class OrganizationsController < ApplicationController
     render :json => {:nodes => @nodes, :links => @links}
 
   end
-  
+
   private
-  
+
     def set_org
       if !params[:name].blank?
         @org = params[:name]
@@ -98,9 +98,9 @@ class OrganizationsController < ApplicationController
         @org = "rmit-programming-club"
       end
     end
-  
+
     def org_params
       params.require(:org).permit(:name)
     end
-  
+
 end
