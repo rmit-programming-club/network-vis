@@ -97,7 +97,7 @@ class OrganizationsController < ApplicationController
 
     render :json => data
   end
-
+    
   private
 
     def set_org
