@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'organizations/index'
+  get 'organizations/activity_heatmap'
 
   get 'welcome_page/welcome'
   root 'welcome_page#welcome'

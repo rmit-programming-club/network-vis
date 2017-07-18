@@ -89,6 +89,15 @@ class OrganizationsController < ApplicationController
 
   end
 
+  def activity_heatmap
+    today = DateTime.now
+    a_week_ago = DateTime.now - 7.days
+
+    data = {today.to_i => 4, a_week_ago.to_i => 2}.to_json
+
+    render :json => data
+  end
+    
   private
 
     def set_org
