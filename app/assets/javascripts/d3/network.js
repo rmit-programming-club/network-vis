@@ -1,6 +1,7 @@
 function drawGraph() {
   var name = $('#name')[0].value
   // Remove any existing graph
+  d3.select("svg").remove();
   console.log("drawGraph Called");
 
   var demo_file = "../organisation_connections.json";
