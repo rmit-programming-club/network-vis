@@ -54,15 +54,16 @@ class OrganizationsController < ApplicationController
           @occurrences[link] += 1
         }
     }
-
-    @nodes = @contributors.map{ |contributor| {:id => contributor, :group => (rand(2) + 1)} }
+    
+    @contributors_hash = Hash[@contributors.each_with_index.map { |c, i| [ c, i ] }]
+    @nodes = @contributors.map{ |contributor| {:id => contributor, :size => (rand(60) + 1), :score => 1, :type => "square" } }
 
     # Reformat @occurences for consumption by d3
     @links = @occurrences.map { |occurrence, value|
       # Current hacky solution for dealing with sets, I can't just do set[0] as
       # they are unordered, if you have a more elegant solution, please change
       o_array = occurrence.to_a
-      {:source => o_array[0], :target => o_array[1], :value => value}
+      {:source => @contributors_hash[o_array[0]], :target => @contributors_hash[o_array[1]], :value => value}
     }
 
 
@@ -85,7 +86,7 @@ class OrganizationsController < ApplicationController
     # @memberRepos = client.repos(aMember[:login])
     # repo = @memberRepos[0][:full_name]
     # @memberRepoCommits = client.list_commits(repo)
-    render :json => {:nodes => @nodes, :links => @links}
+    render :json => {:graph => [], :nodes => @nodes, :links => @links, :directed => false, :multigraph => false}
 
   end
 
