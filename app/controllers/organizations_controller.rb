@@ -44,6 +44,9 @@ class OrganizationsController < ApplicationController
 
     # Search each repo in the organisation
     @repos.each { |repo|
+      if repo[:full_name].empty?
+        next
+      end
       # For each set of contributors in the repo
       client.contributors(repo[:full_name]).map{ |contributor|
         @contributors << contributor[:login]
