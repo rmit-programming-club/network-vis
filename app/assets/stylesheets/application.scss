@@ -51,6 +51,20 @@ body {
   border-top: .05rem solid #e5e5e5;
 }
 
+.btn-primary {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-primary:hover {
+  background-color: #5bd778;
+  border-color: #5bd778;
+}
+
+.form-control {
+  margin-bottom: 1em !important;
+}
+
 /* Customize container */
 @media (min-width: 48em) {
   .container {
