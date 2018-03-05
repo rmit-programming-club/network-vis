@@ -12,6 +12,7 @@
 body {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+  color: white;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -25,13 +26,22 @@ body {
 /* Custom page header */
 .header {
   padding-bottom: 1rem;
-  border-bottom: .05rem solid #e5e5e5;
+  // border-bottom: .05rem solid #e5e5e5;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 3rem;
+  color: #28a745;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #28a745;
+}
+
+.nav-pills .nav-link {
+  color: white;
 }
 
 /* Custom page footer */
@@ -54,7 +64,7 @@ body {
 /* Main marketing message and sign up button */
 .jumbotron {
   text-align: center;
-  border-bottom: .05rem solid #e5e5e5;
+  // border-bottom: .05rem solid #e5e5e5;
 }
 .jumbotron .btn {
   padding: .75rem 1.5rem;

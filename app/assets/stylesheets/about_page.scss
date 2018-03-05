@@ -1,5 +1,5 @@
-html {
-    font-family: 'Merriweather', serif;
+html, body {
+    font-family: 'Jura', sans-serif;
     font-size: 16px;
     line-height: 1.25;
     -ms-text-size-adjust: 100%;
@@ -9,11 +9,12 @@ html {
 body {
     max-width: 1000px;
     margin: 32px auto;
+    background-color: #660066;
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin: 24px 0 8px 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Jura', sans-serif;
     font-style: italic;
     text-transform: uppercase;
     letter-spacing: 1.25px;
@@ -22,7 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 p {
     margin: 0;
     line-height: 1.75;
-    color: rgba(0, 0, 0, 0.8);
+    color: white;
 }
 
 .contributor-container {
@@ -45,12 +46,13 @@ p {
     margin: 0;
     border-radius: 0;
     font-style: italic;
-    color: rgba(0, 0, 0, 0.8);
+    color: white;
     text-align: center;
     text-decoration: none;
 }
 
 .avatar_image {
+    background-color: white;
     margin: 16px 0 8px 0;
     max-height: 120px;
     border-radius: 50%;
