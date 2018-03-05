@@ -7,7 +7,7 @@ function drawGraph() {
   var demo_file = "../organisation_connections.json";
   var other_file = "../miserables.json";
   var example_file = "../example.json";
-  var endpoint = "../organizations/index?name="+name
+  var endpoint = "../organizations/index?name="+name;
   // because we use this on <root>/graph we need to go one directory up
   // to find the /public JSON file at <root>.
 
@@ -56,7 +56,7 @@ function drawGraph() {
   var g = svg.append("g");
   svg.style("cursor","move");
 
-  d3.json(example_file, function(error, graph) {
+  d3.json(endpoint, function(error, graph) {
 
   var linkedByIndex = {};
       graph.links.forEach(function(d) {

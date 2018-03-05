@@ -54,9 +54,16 @@ class OrganizationsController < ApplicationController
           @occurrences[link] += 1
         }
     }
-    
+
     @contributors_hash = Hash[@contributors.each_with_index.map { |c, i| [ c, i ] }]
-    @nodes = @contributors.map{ |contributor| {:id => contributor, :size => (rand(60) + 1), :score => 1, :type => "square" } }
+    @nodes = @contributors.map{ |contributor|
+      {
+        :id => contributor,
+        :size => (rand(60) + 1), # TODO: make this not random
+        :score => 1,
+        :type => "circle"
+      }
+    }
 
     # Reformat @occurences for consumption by d3
     @links = @occurrences.map { |occurrence, value|
@@ -98,7 +105,7 @@ class OrganizationsController < ApplicationController
 
     render :json => data
   end
-    
+
   private
 
     def set_org
