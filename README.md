@@ -6,6 +6,11 @@
 
 -----
 
+
+![preview](https://user-images.githubusercontent.com/12058921/36976051-436bcf2e-20d0-11e8-89cd-08e8e031360a.png)
+
+-----
+
 ## Features Under Development
 
 * Visualise connectivity between organisation members based on coding activity. Emphasise most active members [under dev]
@@ -16,7 +21,7 @@
 
 ## Installing
 
-`git clone` the repo and then do `bundle install`. Post any issues you have in Slack or on the Facebook group.
+`git clone` the repo and then do `bundle install`. Post any issues you have in this [repo's Github issues](https://github.com/rmit-programming-club/network-vis/issues) or on the [Facebook group](https://www.facebook.com/groups/rmitprogramming.club/).
 
 ## Running the App
 
