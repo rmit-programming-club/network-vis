@@ -4,82 +4,82 @@
     "id": "JohanIskandar",
     "size": 58,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }, {
     "id": "thundergolfer",
     "size": 55,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }, {
     "id": "MightyCat",
     "size": 35,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }, {
     "id": "LouisKnuckles",
     "size": 35,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }, {
     "id": "jacshad",
     "size": 1,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }, {
     "id": "fanuch",
     "size": 8,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }, {
     "id": "patrickmfsd",
     "size": 41,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }, {
     "id": "lolprogramming",
     "size": 13,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }, {
     "id": "Fusilion",
     "size": 29,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }, {
     "id": "doanphuctam",
     "size": 28,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }, {
     "id": "blueset",
     "size": 38,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }, {
     "id": "Raddus",
     "size": 9,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }, {
     "id": "Pancrisp",
     "size": 4,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }, {
     "id": "newmanicspree",
     "size": 11,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }, {
     "id": "darvid7",
     "size": 1,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }, {
     "id": "reneegaspar",
     "size": 30,
     "score": 1,
-    "type": "square"
+    "type": "circle"
   }],
   "links": [{
     "source": 0,

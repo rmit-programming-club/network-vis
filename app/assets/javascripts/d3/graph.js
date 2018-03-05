@@ -12,7 +12,7 @@ $.ajax({
        });
 
 function draw(data) {
-    var color = d3.scale.ordinal(d3.schemeCategory20b);
+    var color = d3.scale.ordinal(d3.schemeSet2);
     var width = 420,
         barHeight = 20;
 
@@ -31,7 +31,7 @@ function draw(data) {
                   return "translate(0," + i * barHeight + ")";
               });
 
-    bar.append("rect")
+    bar.append("circle")
         .attr("width", x)
         .attr("height", barHeight - 1)
         .style("fill", function (d) {

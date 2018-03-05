@@ -26,9 +26,9 @@ function drawGraph() {
 
   var color = d3.scale.linear()
     .domain([min_score, (min_score+max_score)/2, max_score])
-    .range(["lime", "yellow", "red"]);
+    .range(["lime", "yellow", "#28a745"]);
 
-  var highlight_color = "blue";
+  var highlight_color = "#00ff99";
   var highlight_trans = 0.1;
 
   var size = d3.scale.pow().exponent(1)
@@ -36,15 +36,15 @@ function drawGraph() {
     .range([8,24]);
 
   var force = d3.layout.force()
-    .linkDistance(60)
-    .charge(-300)
+    .linkDistance(200)
+    .charge(-500)
     .size([w,h]);
 
-  var default_node_color = "#ccc";
+  var default_node_color = "#fff";
   //var default_node_color = "rgb(3,190,100)";
-  var default_link_color = "#888";
-  var nominal_base_node_size = 8;
-  var nominal_text_size = 10;
+  var default_link_color = "#fff";
+  var nominal_base_node_size = 18;
+  var nominal_text_size = 20;
   var max_text_size = 24;
   var nominal_stroke = 1.5;
   var max_stroke = 4.5;
@@ -129,6 +129,7 @@ function drawGraph() {
       .data(graph.nodes)
       .enter().append("text")
       .attr("dy", ".35em")
+      .attr("fill", "#bbff99")
   	.style("font-size", nominal_text_size + "px")
 
   	if (text_center)
@@ -173,13 +174,17 @@ function drawGraph() {
   		highlight_node = null;
   	if (focus_node===null)
   	{
-  		svg.style("cursor","move");
-  		if (highlight_color!="white")
-  	{
-    	  circle.style(towhite, "white");
-  	  text.style("font-weight", "normal");
-  	  link.style("stroke", function(o) {return (isNumber(o.score) && o.score>=0)?color(o.score):default_link_color});
-   }
+  	   svg.style("cursor","move");
+  	   if (highlight_color != "white") {
+         circle.style(towhite, "white");
+      	 text.style("font-weight", "normal");
+      	 link.style(
+           "stroke",
+           function(o) {
+             return (isNumber(o.score) && o.score >= 0) ? color(o.score) : default_link_color
+           }
+         );
+       }
 
   	}
   }
@@ -252,7 +257,6 @@ function drawGraph() {
     d3.select(window).on("resize", resize).on("keydown", keydown);
 
     force.on("tick", function() {
-
       node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
       text.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
@@ -317,17 +321,16 @@ function drawGraph() {
 
   });
 
-  function vis_by_type(type)
-  {
-  	switch (type) {
-  	  case "circle": return keyc;
-  	  case "square": return keys;
-  	  case "triangle-up": return keyt;
-  	  case "diamond": return keyr;
-  	  case "cross": return keyx;
-  	  case "triangle-down": return keyd;
-  	  default: return true;
-  }
+  function vis_by_type(type) {
+    	switch (type) {
+    	  case "square": return keyc;
+    	  case "circle": return keys;
+    	  case "triangle-up": return keyt;
+    	  case "diamond": return keyr;
+    	  case "cross": return keyx;
+    	  case "triangle-down": return keyd;
+    	  default: return true;
+    }
   }
   function vis_by_node_score(score)
   {
