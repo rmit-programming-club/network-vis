@@ -9,6 +9,12 @@ class OrganizationsController < ApplicationController
   # with the org
 
   def index
+    set_org
+
+    data = Rails.cache.fetch @org
+    if !data.nil?
+      render :json => data
+    end
 
     client = Octokit::Client.new
 
@@ -27,9 +33,6 @@ class OrganizationsController < ApplicationController
     user = client.user
     organizations = client.organizations(user)
 
-
-    # TODO add check for a specific org, currently just gets first
-    set_org
     @repos = client.repos(@org)
 
     # Create a new hash and set default_proc so new entries are given a default
@@ -93,8 +96,10 @@ class OrganizationsController < ApplicationController
     # @memberRepos = client.repos(aMember[:login])
     # repo = @memberRepos[0][:full_name]
     # @memberRepoCommits = client.list_commits(repo)
-    render :json => {:graph => [], :nodes => @nodes, :links => @links, :directed => false, :multigraph => false}
+    data = {:graph => [], :nodes => @nodes, :links => @links, :directed => false, :multigraph => false}
+    Rails.cache.write @org, data
 
+    render :json => data
   end
 
   def activity_heatmap
