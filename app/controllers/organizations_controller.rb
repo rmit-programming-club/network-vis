@@ -48,10 +48,17 @@ class OrganizationsController < ApplicationController
         next
       end
       # For each set of contributors in the repo
-      client.contributors(repo[:full_name]).map{ |contributor|
+      contribs = client.contributors(repo[:full_name])
+      if !contribs.kind_of?(Array)
+        logger.warn(contribs)
+        next
+      end
+
+      contribs.map{ |contributor|
         @contributors << contributor[:login]
         # Get all possible pairs of contributors
-        contributor[:login]}.combination(2) {
+        contributor[:login]
+      }.combination(2) {
           |c1, c2|
           # As a set, so they don't double up, avoids (jeff, dave) and
           # (dave, jeff) being different entries
@@ -59,7 +66,7 @@ class OrganizationsController < ApplicationController
           # Increment the amount of times that pair have appeared in a repo
           # together
           @occurrences[link] += 1
-        }
+      }
     }
 
     @contributors_hash = Hash[@contributors.each_with_index.map { |c, i| [ c, i ] }]
