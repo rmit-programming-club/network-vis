@@ -100,7 +100,13 @@ class OrganizationsController < ApplicationController
     # @memberRepos = client.repos(aMember[:login])
     # repo = @memberRepos[0][:full_name]
     # @memberRepoCommits = client.list_commits(repo)
-    data = {:graph => [], :nodes => @nodes, :links => @links, :directed => false, :multigraph => false}
+    data = {
+      :graph => [],
+      :nodes => @nodes,
+      :links => @links,
+      :directed => false,
+      :multigraph => false
+    }
     Rails.cache.write @org, data
 
     render :json => data
