@@ -4,9 +4,7 @@ function drawGraph() {
   d3.select("svg").remove();
   console.log("drawGraph Called");
 
-  var demo_file = "../organisation_connections.json";
-  var other_file = "../miserables.json";
-  var example_file = "../example.json";
+  // var example_file = "../example.json";
   var endpoint = "../organizations/index?name="+name;
   // because we use this on <root>/graph we need to go one directory up
   // to find the /public JSON file at <root>.
