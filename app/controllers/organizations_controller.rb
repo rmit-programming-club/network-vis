@@ -14,6 +14,7 @@ class OrganizationsController < ApplicationController
     data = Rails.cache.fetch @org
     if !data.nil?
       render :json => data
+      return
     end
 
     client = Octokit::Client.new
