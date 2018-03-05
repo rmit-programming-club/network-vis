@@ -27,3 +27,7 @@ In order to use Github's API in this project you need to provide your Github aut
 #### Starting the Local Server
 
 Run `GITHUB_USERNAME=<USERNAME> GITHUB_PASSWORD=<PASSWORD OR ACCESS_TOKEN> bundle exec rails server` to get authentication working. If you don't want to have to keep supplying these details save them to a `.bash_profile` file or something.
+
+#### Resetting DB
+
+`bundle exec rake db:drop db:create db:schema:load`
