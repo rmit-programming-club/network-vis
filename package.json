@@ -1,0 +1,35 @@
+{
+  "name": "network-vis",
+  "version": "1.0.0",
+  "description": "A tool to visualisation coding activity and collaboration within a Github Organisation",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmit-programming-club/network-vis.git"
+  },
+  "keywords": [
+    "github",
+    "network-visualisation"
+  ],
+  "author": "thundergolfer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rmit-programming-club/network-vis/issues"
+  },
+  "homepage": "https://github.com/rmit-programming-club/network-vis#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "d3": "^3.5.17",
+    "webpack": "^3.11.0",
+    "webpack-cli": "^2.0.10"
+  }
+}

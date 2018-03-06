@@ -1,3 +1,6 @@
+import * as d3 from "d3";
+import {event as d3CurrentEvent} from 'd3';
+
 function drawGraph() {
   var name = $('#name')[0].value
   // Remove any existing graph
@@ -12,7 +15,8 @@ function drawGraph() {
   var w = window.innerWidth;
   var h = window.innerHeight;
 
-  var keyc = keys = keyt = keyr = keyx = keyd = keyl = keym = keyh = key1 = key2 = key3 = key0 = true;
+  var keyc, keys, keyt, keyr, keyx, keyd, keyl, keym, keyh, key1, key2, key3, key0;
+  keyc = keys = keyt = keyr = keyx = keyd = keyl = keym = keyh = key1 = key2 = key3 = key0 = true;
 
   var focus_node = null, highlight_node = null;
 
@@ -101,7 +105,7 @@ function drawGraph() {
       .call(force.drag);
 
 
-    node.on("dblclick.zoom", function(d) { d3.event.stopPropagation();
+    node.on("dblclick.zoom", function(d) { d3CurrentEvent.stopPropagation();
     var dcx = (window.innerWidth/2-d.x*zoom.scale());
     var dcy = (window.innerHeight/2-d.y*zoom.scale());
     zoom.translate([dcx,dcy]);
@@ -149,7 +153,7 @@ function drawGraph() {
   	   set_highlight(d);
   	})
     .on("mousedown", function(d) {
-      d3.event.stopPropagation();
+      d3CurrentEvent.stopPropagation();
     	focus_node = d;
 
   	  set_focus(d)
@@ -256,7 +260,7 @@ function drawGraph() {
       }
       text.style("font-size",text_size + "px");
 
-      g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+      g.attr("transform", "translate(" + d3CurrentEvent.translate + ")scale(" + d3CurrentEvent.scale + ")");
     });
 
     svg.call(zoom);
@@ -288,10 +292,10 @@ function drawGraph() {
     }
 
     function keydown() {
-    	if (d3.event.keyCode==32) {
+    	if (d3CurrentEvent.keyCode==32) {
         force.stop();
-      } else if (d3.event.keyCode>=48 && d3.event.keyCode<=90 && !d3.event.ctrlKey && !d3.event.altKey && !d3.event.metaKey) {
-        switch (String.fromCharCode(d3.event.keyCode)) {
+      } else if (d3CurrentEvent.keyCode>=48 && d3CurrentEvent.keyCode<=90 && !d3CurrentEvent.ctrlKey && !d3CurrentEvent.altKey && !d3CurrentEvent.metaKey) {
+        switch (String.fromCharCode(d3CurrentEvent.keyCode)) {
           case "C": keyc = !keyc; break;
           case "S": keys = !keys; break;
     	    case "T": keyt = !keyt; break;
@@ -372,7 +376,9 @@ function drawGraph() {
   }
 }
 
-// Add listener to button
-$(document).on('turbolinks:load', function() {
-  $('#submit-name').click(drawGraph)
-});
+export { drawGraph };
+//
+// // Add listener to button
+// $(document).on('turbolinks:load', function() {
+//   $('#submit-name').click(drawGraph)
+// });

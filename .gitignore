@@ -58,3 +58,7 @@ build-iPhoneSimulator/
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 !.elasticbeanstalk/*config.yml
+
+node_modules/
+
+*.sqlite3
