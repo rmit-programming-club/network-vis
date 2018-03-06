@@ -21,7 +21,13 @@
 
 ## Installing
 
-`git clone` the repo and then do `bundle install`. Post any issues you have in this [repo's Github issues](https://github.com/rmit-programming-club/network-vis/issues) or on the [Facebook group](https://www.facebook.com/groups/rmitprogramming.club/).
+> Note: You might not have things like `bundle` or `npm` or `git` on your computer. You will of course need to install these.
+
+1. `git clone` the repo
+2. then do `bundle install`.
+3. then do `npm install` in project root directory
+
+Post any issues you have in this [repo's Github issues](https://github.com/rmit-programming-club/network-vis/issues) or on the [Facebook group](https://www.facebook.com/groups/rmitprogramming.club/).
 
 ## Running the App
 
@@ -33,6 +39,20 @@ In order to use Github's API in this project you need to provide your Github aut
 
 Run `GITHUB_USERNAME=<USERNAME> GITHUB_PASSWORD=<PASSWORD OR ACCESS_TOKEN> bundle exec rails server` to get authentication working. If you don't want to have to keep supplying these details save them to a `.bash_profile` file or something.
 
-#### Resetting DB
+## Development
+
+#### `/app`
+
+Contains the core Rails app controllers, models, and views.
+
+#### `/app-js`
+
+Contains ES6-compatible JS files that get compiled using *Babel* and *Webpack* into an `app-js.js` file that's placed in the asset pipeline in `app/assets/javascripts/` and loaded by the Rails app.
+
+To compile the files in `app-js/` run `npm run build`.
+
+#### `db`
+
+##### Resetting DB
 
 `bundle exec rake db:drop db:create db:schema:load`
