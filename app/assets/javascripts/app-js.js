@@ -9033,7 +9033,15 @@ console.log('hello from the compiled JS');
 
 // Add listener to button
 $(document).on('turbolinks:load', function () {
-  $('#submit-name').click(_network.drawGraph);
+  if ($('#cal-heatmap').length > 0) {
+    // on home page
+    (0, _network.drawGraph)('rmit-programming-club');
+  }
+
+  $('#submit-name').click(function () {
+    var name = $('#name')[0].value;
+    (0, _network.drawGraph)(name);
+  });
 });
 
 /***/ }),
@@ -9054,10 +9062,10 @@ var d3 = _interopRequireWildcard(_d);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-function drawGraph() {
-  var name = $('#name')[0].value;
+function drawGraph(orgName) {
+  var name = orgName;
   // Remove any existing graph
-  d3.select("svg").remove();
+  d3.select("#graph-container").select("svg").remove();
   console.log("drawGraph Called");
 
   // var example_file = "../example.json";
@@ -9100,7 +9108,7 @@ function drawGraph() {
   var max_base_node_size = 36;
   var min_zoom = 0.1;
   var max_zoom = 7;
-  var svg = d3.select(".container").append("svg");
+  var svg = d3.select("#graph-container").append("svg");
   var zoom = d3.behavior.zoom().scaleExtent([min_zoom, max_zoom]);
   var g = svg.append("g");
   svg.style("cursor", "move");
@@ -9173,7 +9181,7 @@ function drawGraph() {
       text.attr("dx", function (d) {
         return size(d.size) || nominal_base_node_size;
       }).text(function (d) {
-        return '\u2002' + d.id;
+        return "\u2002" + d.id;
       });
     }
 

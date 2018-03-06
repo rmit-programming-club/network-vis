@@ -1,10 +1,10 @@
 import * as d3 from "d3";
 import {event as d3CurrentEvent} from 'd3';
 
-function drawGraph() {
-  var name = $('#name')[0].value
+function drawGraph(orgName) {
+  var name = orgName
   // Remove any existing graph
-  d3.select("svg").remove();
+  d3.select("#graph-container").select("svg").remove();
   console.log("drawGraph Called");
 
   // var example_file = "../example.json";
@@ -53,7 +53,7 @@ function drawGraph() {
   var max_base_node_size = 36;
   var min_zoom = 0.1;
   var max_zoom = 7;
-  var svg = d3.select(".container").append("svg");
+  var svg = d3.select("#graph-container").append("svg");
   var zoom = d3.behavior.zoom().scaleExtent([min_zoom,max_zoom])
   var g = svg.append("g");
   svg.style("cursor","move");

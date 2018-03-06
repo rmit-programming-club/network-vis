@@ -4,5 +4,12 @@ console.log('hello from the compiled JS');
 
 // Add listener to button
 $(document).on('turbolinks:load', function() {
-  $('#submit-name').click(drawGraph)
+  if ($('#cal-heatmap').length > 0) { // on home page
+    drawGraph('rmit-programming-club');
+  }
+
+  $('#submit-name').click(() => {
+    let name = $('#name')[0].value
+    drawGraph(name);
+  });
 });
